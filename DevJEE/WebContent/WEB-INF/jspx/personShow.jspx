@@ -1,0 +1,60 @@
+<jsp:root version="2.0"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
+
+	<html>
+	<head>
+		<jsp:directive.page contentType="text/html" />
+		<jsp:include page="/WEB-INF/jspx/head-bootstrap.jspx"/>
+		<c:url var="home" value="/actions/user/home" />
+		
+		<title><spring:message code="title.personshow"/></title>
+	</head>
+	
+	<body>
+		<jsp:include page="/WEB-INF/jspx/navbar.jspx"/>
+	
+		<div class="container">
+			<h2>
+				<spring:message code="personshow.person"/><c:out value="${person.name.concat(' ').concat(person.firstname)}"/>
+			</h2>
+	
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<th><spring:message code="personshow.name"/></th>
+						<td><c:out value="${person.name}"/></td>
+					</tr>
+					<tr>
+						<th><spring:message code="personshow.firstname"/></th>
+						<td><c:out value="${person.firstname}"/></td>
+					</tr>
+					<tr>
+						<th><spring:message code="personshow.email.address"/></th>
+						<spring:message code="personshow.please.login" var="ppl"/>
+						<td><c:out value="${person.address}" default="${ppl}"/></td>
+					</tr>
+					<tr>
+						<th><spring:message code="personshow.website"/></th>
+						<spring:message code="personshow.no.website" var="pnw"/>
+						<td><c:out value="${person.website}" default="${pnw}"/></td>
+					</tr>
+					<tr>
+						<th><spring:message code="personshow.birthday"/></th>
+						<td><c:out value="${person.birthday.toString()}" default="${ppl}"/></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+	</body>
+	</html>
+</jsp:root>

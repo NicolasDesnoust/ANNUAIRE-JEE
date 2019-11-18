@@ -1,0 +1,18 @@
+<jsp:root
+	version="2.0"
+   xmlns:form="http://www.springframework.org/tags/form"
+   xmlns:jsp="http://java.sun.com/JSP/Page"
+   xmlns:c="http://java.sun.com/jsp/jstl/core"
+   xmlns:spring="http://www.springframework.org/tags"
+   xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+   xmlns="http://www.w3.org/1999/xhtml">
+   
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+		<jsp:text> </jsp:text>
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	<jsp:text> </jsp:text>
+	</script>
+	
+</jsp:root>

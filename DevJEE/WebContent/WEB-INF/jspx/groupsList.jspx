@@ -1,0 +1,38 @@
+<jsp:root version="2.0"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
+
+	<html>
+		<jsp:directive.page contentType="text/html" />
+		<head>
+			<c:url var="edit" value="/actions/person/list" />
+			<jsp:include page="/WEB-INF/jspx/head-bootstrap.jspx"/>
+			
+			<title><spring:message code="title.groupsList" /></title>
+		</head>
+		<body>
+			<jsp:include page="/WEB-INF/jspx/navbar.jspx"/>
+		
+			<div class="container">
+		
+				<table class="table table-striped" border='1'>
+					<c:forEach items="${groups}" var="grou">
+						<tr>
+							<td><a href="${edit}?groupId=${grou.id}"> <c:out
+										value="${grou.name}" /></a></td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</body>
+	</html>
+	
+</jsp:root>

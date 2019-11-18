@@ -1,0 +1,75 @@
+<jsp:root
+	version="2.0"
+   xmlns:form="http://www.springframework.org/tags/form"
+   xmlns:jsp="http://java.sun.com/JSP/Page"
+   xmlns:c="http://java.sun.com/jsp/jstl/core"
+   xmlns:spring="http://www.springframework.org/tags"
+   xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+   xmlns="http://www.w3.org/1999/xhtml">
+   	
+	<c:url var="login" value="/actions/user/login" />
+	<c:url var="logout" value="/actions/user/logout" />
+	<c:url var="home" value="/actions/user/home" />
+	<c:url var="groupList" value="/actions/group/list" />
+	<c:url var="fr" value="?language=fr_FR" />
+	<c:url var="en" value="?language=en_EN" />
+	
+	<style>
+		.loginLink {position:absolute; top:15px; right:15px; font-size:x-large;}
+	
+		.navbar {
+		   	-webkit-border-radius: 0;
+		   	-moz-border-radius: 0;
+		   	border-radius: 0;
+		}
+		
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+		  -webkit-appearance: none; 
+		  margin: 0; 
+		}
+	</style>
+	
+	<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="${home}"><spring:message code="navbar.home.button"/></a>
+				</div>
+				<ul class="nav navbar-nav">
+	      			<li><a href="${groupList}"><spring:message code="navbar.grouplist.button"/></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				
+					<li><a href="${empty group ? (
+					empty person ? fr : fr.concat('&amp;personId=').concat(person.id)
+					) : fr.concat('&amp;groupId=').concat(group.id)}">
+						<spring:message code="navbar.french.button"/>
+						</a>
+					</li>
+					<li><a href="${empty group ? (
+					empty person ? en : en.concat('&amp;personId=').concat(person.id)
+					) : en.concat('&amp;groupId=').concat(group.id)}">
+							<spring:message code="navbar.english.button"/>
+						</a>
+					</li>
+					<li><a href="${login}"><span class="glyphicon glyphicon-log-in"></span>
+					<jsp:text> </jsp:text>
+							<c:choose>
+								<c:when test="${user.id == 'Anonymous'}">
+									<spring:message code="navbar.login.button"/>
+								</c:when>
+							    <c:otherwise>
+							    	${user.name.concat(' ').concat(user.firstname)}
+							    </c:otherwise>
+						    </c:choose>
+						</a>
+					</li>
+					<li><a href="${logout}"><span class="glyphicon glyphicon-log-out"></span>
+					<jsp:text> </jsp:text>
+							<spring:message code="navbar.logout.button"/>
+						</a>
+					</li>
+				</ul>
+			</div>
+	</nav>
+</jsp:root>

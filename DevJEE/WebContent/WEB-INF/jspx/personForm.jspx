@@ -1,0 +1,77 @@
+<jsp:root version="2.0"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+	<jsp:output omit-xml-declaration="false" doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" />
+
+	<html>
+	<head>
+		<jsp:directive.page contentType="text/html" />
+		<jsp:include page="/WEB-INF/jspx/head-bootstrap.jspx"/>
+		
+		<title><spring:message code="title.personform"/></title>
+	</head>
+	
+	<body>
+		<jsp:include page="/WEB-INF/jspx/navbar.jspx"/>
+	
+	    <div class="container">
+	        <h1><spring:message code="personform.edit.person"/></h1>
+	
+	        <form:form method="POST" modelAttribute="person">
+	
+	            <form:errors path="*" cssClass="alert alert-danger" element="div" />
+	
+	            <div class="form-group">
+	                <label for="name"><spring:message code="personform.name"/>:</label>
+	                <form:input class="form-control" path="name" />
+	                <form:errors path="name" cssClass="alert alert-warning"
+	                    element="div" />
+	            </div>
+	            <div class="form-group">
+	                <label for="firstname"><spring:message code="personform.firstname"/>:</label>
+	                <form:input class="form-control" path="firstname" />
+	                <form:errors path="firstname" cssClass="alert alert-warning"
+	                    element="div" />
+	            </div>
+	            <div class="form-group">
+	                <label for="address"><spring:message code="personform.email.address"/>:</label>
+	                <form:textarea class="form-control" path="address" />
+	                <form:errors path="address" cssClass="alert alert-warning"
+	                    element="div" />
+	            </div>
+	            <div class="form-group">
+	                <label for="website"><spring:message code="personform.website"/>:</label>
+	                <form:input path="website" class="form-control" />
+	                <form:errors path="website" cssClass="alert alert-warning"
+	                    element="div" />
+	            </div>
+	            <div class="form-group">
+	                <label for="birthday"><spring:message code="personform.birthday"/>:</label>
+	                <fmt:formatDate value="${person.birthday}" var="dateString" pattern="yyyy-MM-dd" />
+	                <form:input type="date" path="birthday" value="${dateString}" class="form-control" />
+	                <form:errors path="birthday" cssClass="alert alert-warning"
+	                    element="div" />
+	            </div>
+	            <div class="form-group">
+	                <label for="password"><spring:message code="personform.password"/>:</label>
+	                <form:input path="password" class="form-control" />
+	                <form:errors path="password" cssClass="alert alert-warning"
+	                    element="div" />
+	            </div>
+	            
+	            <div class="form-group">
+	                <button type="submit" class="btn btn-info"><spring:message code="personform.submit.button"/></button>
+	            </div>
+	        </form:form>
+	    </div>
+	
+	</body>
+	</html>
+</jsp:root>
